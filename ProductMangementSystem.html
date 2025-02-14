@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management System</title>
+
+    <style>
+        body{
+            background-image: url(https://images.unsplash.com/photo-1534723452862-4c874018d66d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+            background-size:cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        form{
+            background-image: url(https://plus.unsplash.com/premium_photo-1677995700947-4b92cb1bba76?q=80&w=1565&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+            background-size:cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <p style="background: blue"><marquee behavior="scroll" direction="left" scrollAmount="25"><h1 class="text-center text-warning">Product Management System</h1></marquee></p>
+    <div class="container">
+        
+        <form class="row g-3 p-3  text-secondary bg-dark my-5 shadow rounded-3 ">
+            <h3 class="text-center text-dark fs-1">Add A New Product</h3>
+            <div class="col-md-12">
+                <label for="Product_name" class="form-label">Product Name</label>
+                <input type="text" class="form-control" id="Product_name" placeholder="example-Rice">
+            </div>
+            <div class="col-md-12">
+                <label for="Product_price" class="form-label">Price(&#x20B9;)</label>
+                <input type="number" class="form-control" id="Product_price" placeholder="example-100&#x20B9;">
+            </div>
+
+            <div class="col-md-12">
+                <label for="Product_category" class="form-label">Category</label>
+                <select id="Product_category" class="form-select" >
+                    <option selected disabled>select category</option>
+                    <option value="Grocery & Food">Grocery & Food</option>
+                    <option value="Personal Care & Hygiene">Personal Care & Hygiene</option>
+                    <option value="Household Essentials">Household Essentials</option>
+                    <option value="Beverages">Beverages</option>
+                    <option value="Snacks & Confectionery">Snacks & Confectionery</option>
+                    <option value="Cleaning & Laundry">Cleaning & Laundry</option>
+                    <option value="Baby Care">Baby Care</option>
+                    <option value="Health & Wellness">Health & Wellness</option>
+                    <option value="Kitchen Essentials">Kitchen Essentials</option>
+                    <option value="Home & Living">Home & Living</option>
+                </select>
+            </div>
+            <div class="col-md-12">
+                <label for="Product_url" class="form-label">Image Url</label>
+                <input type="url" class="form-control" id="Product_url" placeholder="example-https://unsplash.com/s/photos/grocery-store
+                ">
+            </div>
+            <div class="col-12">
+
+                <button type="submit" onclick="addProduct();return false;" class="btn btn-success form-control col-md-6">Add
+                    Product</button>
+                <button class='btn btn-primary text-light my-3 form-control col-md-6' onclick='sortbyprice();'>Sort</button>
+
+            </div>
+        </form>
+
+    </div>
+
+
+    <!--  modal -->
+
+    <div class="modal fade" id="ProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 " id="modalTitle">Product Title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><b>Category:</b> <i id="modalCategory"></i></p>
+                    <p><b>Price:</b> <i id="modalPrice"></i> &#x20B9;</p>
+                    <img id="modalImage" class="rounded" alt="Product Image" style="height:50vh;width: 100%;">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- table -->
+
+    <table class="table table-dark text-center table-hover">
+        <thead>
+            <tr>
+                <th colspan="7" class="bg-white text-black border">Product Data</th>
+            </tr>
+            <th class="bg-primary  ">Serial No</th>
+            <th class="bg-primary  ">Name</th>
+            <th class="bg-primary  ">Price</th>
+            <th class="bg-primary  ">Category</th>
+            <th class="bg-primary  ">ImgUrl</th>
+            <th class="bg-primary  ">Details</th>
+            <th class="bg-primary  ">Product</th>
+        </thead>
+        <tbody id="table_data">
+
+        </tbody>
+
+    </table>
+
+
+
+    <script>
+        let product_data = [];
+
+        const addProduct = () => {
+            // console.log(document.getElementById('Product_url').value);
+
+            let Product_name = document.getElementById('Product_name').value;
+            let Product_price = document.getElementById('Product_price').value;
+            let Product_category = document.getElementById('Product_category').value;
+            let Product_url = document.getElementById('Product_url').value;
+
+            if (!Product_name || !Product_price || !Product_category || !Product_url) {
+                alert("Please fill all fields");
+                return;
+            }
+
+            let product_info = {
+                name: Product_name.toUpperCase(),
+                price: Product_price,
+                category: Product_category,
+                url: Product_url,
+            }
+
+            product_data.push(product_info);
+
+            displayProduct();
+
+
+        }
+
+        const displayProduct = () => {
+            document.getElementById('table_data').innerHTML = '';
+
+            product_data.forEach((product, i) => {
+                document.getElementById('table_data').innerHTML +=
+                    `<tr>
+                        <td>${i + 1}</td>
+                        <td>${product.name}</td>
+                        <td>${product.price}&#x20B9;</td>
+                        <td>${product.category}</td>
+                        <td>${product.url}</td>
+                        <td><button class='btn btn-info' data-bs-toggle="modal" data-bs-target="#ProductModal" onclick='viewDetails(${i});'>View Details</button></td>
+                        <td><button class='btn btn-danger' onclick='deleteProduct(${i});'>Remove</button></td>
+                    <tr>`;
+
+            })
+        }
+
+        const deleteProduct = (idx) => {
+            product_data.splice(idx, 1);
+            displayProduct();
+        }
+
+        const sortbyprice = () => {
+            product_data.sort((product_1, product_2) => Number(product_1.price) - Number(product_2.price));
+            displayProduct();
+        }
+
+        const viewDetails = (idx) => {
+            document.getElementById('modalTitle').innerText = product_data[idx].name;
+            document.getElementById('modalCategory').innerText = product_data[idx].category;
+            document.getElementById('modalPrice').innerText = product_data[idx].price;
+            document.getElementById('modalImage').src = product_data[idx].url;
+            // console.log(document.getElementById('modalImage'));
+        }
+
+        let url="https://api.unsplash.com/search/photos?query=rice";
+
+        const fetchApi=()=>{
+
+        }
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
