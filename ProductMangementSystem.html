@@ -5,45 +5,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
 
     <style>
-        body{
-            background-image: url(https://images.unsplash.com/photo-1534723452862-4c874018d66d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-            background-size:cover;
+        /* html{
+            width: 100%;
+        } */
+
+        body {
+            background: url('https://files.oaiusercontent.com/file-WELSQTEvWtZN35BQZ7wRtC?se=2025-02-16T12%3A56%3A49Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D6c42d9da-8bf7-424d-8c13-46d3a8496964.webp&sig=Or5Oi1iW/7HLwdLeNFz%2BPb7TXb8ct8J6fChk2VjO5Xo%3D') ;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Optional: To add a semi-transparent overlay */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            /* Adjust opacity as needed */
+            z-index: -1;
+        }
+
+
+
+        #entry-form {
+            background-image: url(https://files.oaiusercontent.com/file-6bqTvMkPF5hZfNGQY1TW5V?se=2025-02-16T04%3A30%3A04Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D01738188-02f1-4674-a64b-cbbfcbba724c.webp&sig=nhNT5XynZ9rcrIkcPYt0M9Y%2Bwzu0XG2q4xY8wai83EQ%3D);
+            background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
         }
-        form{
-            background-image: url(https://plus.unsplash.com/premium_photo-1677995700947-4b92cb1bba76?q=80&w=1565&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-            background-size:cover;
-            background-repeat: no-repeat;
-            background-position: center;
+
+        .ImgUrl {
+            max-width: 150px;
+            min-height: 10rem;
+            /* word-break: break-all; */
+            overflow: hidden;
+            text-wrap: pretty;
+            text-overflow: clip;
+            /* white-space: nowrap; */
+            cursor: pointer;
+        }
+
+        .PrevImg {
+            width: 200px;
+            height: 150px;
+            /* overflow: hidden; */
         }
     </style>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
 
-    <p style="background: blue"><marquee behavior="scroll" direction="left" scrollAmount="25"><h1 class="text-center text-warning">Product Management System</h1></marquee></p>
-    <div class="container">
-        
-        <form class="row g-3 p-3  text-secondary bg-dark my-5 shadow rounded-3 ">
-            <h3 class="text-center text-dark fs-1">Add A New Product</h3>
-            <div class="col-md-12">
-                <label for="Product_name" class="form-label">Product Name</label>
-                <input type="text" class="form-control" id="Product_name" placeholder="example-Rice">
+
+
+    <marquee behavior="scroll" direction="left" scrollAmount="25"
+        class="w-full h1 bg-dark text-light text-center fw-bold">
+        Smart Product Manager
+    </marquee>
+
+
+
+    <!-- <div class="d-flex justify-content-center align-items-center w-full"> -->
+
+    <div class="row">
+        <div class="col"></div>
+        <form class=" col col-md-6 g-2 p-3 text-secondary bg-dark my-5 shadow rounded-3 " id="entry-form"
+            style="min-width: 345px;">
+            <marquee behavior="scroll" direction="left" scrollAmount="25"
+                class="fw-bold w-full h1 bg-light text-dark opacity-75 text-center">
+                Product Entry Form
+            </marquee>
+            <div class="col-12">
+                <label for="Product_name" class="form-label text-secondary fw-bold bg-light opacity-75">Product
+                    Name</label>
+                <input type="text" class="form-control opacity-75 fw-bolder" id="Product_name"
+                    placeholder="Product Name" required>
             </div>
-            <div class="col-md-12">
-                <label for="Product_price" class="form-label">Price(&#x20B9;)</label>
-                <input type="number" class="form-control" id="Product_price" placeholder="example-100&#x20B9;">
+            <div class="col-12">
+                <label for="Product_price"
+                    class="form-label text-secondary fw-bold bg-light opacity-75">Price(&#x20B9;)</label>
+                <input type="number" class="form-control opacity-75 fw-bolder" id="Product_price"
+                    placeholder="Product Price" required>
             </div>
 
-            <div class="col-md-12">
-                <label for="Product_category" class="form-label">Category</label>
-                <select id="Product_category" class="form-select" >
+            <div class="col-12">
+                <label for="Product_category"
+                    class="form-label text-secondary fw-bold bg-light opacity-75 ">Category</label>
+                <select id="Product_category" class="form-select opacity-75 fw-bolder" required>
                     <option selected disabled>select category</option>
                     <option value="Grocery & Food">Grocery & Food</option>
                     <option value="Personal Care & Hygiene">Personal Care & Hygiene</option>
@@ -57,21 +119,31 @@
                     <option value="Home & Living">Home & Living</option>
                 </select>
             </div>
-            <div class="col-md-12">
-                <label for="Product_url" class="form-label">Image Url</label>
-                <input type="url" class="form-control" id="Product_url" placeholder="example-https://unsplash.com/s/photos/grocery-store
-                ">
+            <div class="col-12">
+                <label for="Product_url" class="form-label text-secondary fw-bold bg-light opacity-75">Image
+                    Url</label>
+                <input type="url" class="form-control opacity-75 fw-bolder" id="Product_url" placeholder="https://unsplash.com/s/photos/grocery-store
+                        ">
             </div>
             <div class="col-12">
 
-                <button type="submit" onclick="addProduct();return false;" class="btn btn-success form-control col-md-6">Add
+                <button type="submit" onclick="addProduct();return false;"
+                    class="btn btn-success form-control col-md-6 my-2 opacity-75 fw-bolder">Add
                     Product</button>
-                <button class='btn btn-primary text-light my-3 form-control col-md-6' onclick='sortbyprice();'>Sort</button>
+                <button id="sort_btn" class='btn btn-primary text-light form-control col-md-6 opacity-75 fw-bolder '
+                    onclick='sortbyprice();return false;'>Sort</button>
 
             </div>
         </form>
-
+        <div class="col"></div>
     </div>
+
+
+
+    <!-- </div> -->
+
+
+
 
 
     <!--  modal -->
@@ -98,19 +170,59 @@
 
 
     <!-- table -->
+    <div class="row my-3 mx-0">
+        <div class="col-lg-6">
 
-    <table class="table table-dark text-center table-hover">
+            <form role="search">
+                <div class="row">
+                    <div class="col-11 my-2">
+                        <input class="form-control" type="search" id="search_category" placeholder="Search By Category"
+                            aria-label="Search">
+                    </div>
+                    <div class="col-1 my-2">
+                        <button class="btn btn-primary" onclick="searchProductByCategory();return false;"
+                            type="submit"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-lg-6">
+            <form role="search">
+                <div class="row">
+                    <div class="col-11">
+                        <input class="form-control my-2" type="search" id="search_name"
+                            placeholder="Search By product name" aria-label="Search">
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-primary my-2" onclick="searchProductByName();return false;"
+                            type="submit">
+                            <i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+    <!-- <div class="table-responsive" style="width: 100%;"> -->
+    <table class="table table-dark text-center table-hover ">
         <thead>
             <tr>
-                <th colspan="7" class="bg-white text-black border">Product Data</th>
+                <th colspan="8" class="bg-white text-black border" class="col">Product Data</th>
             </tr>
-            <th class="bg-primary  ">Serial No</th>
-            <th class="bg-primary  ">Name</th>
-            <th class="bg-primary  ">Price</th>
-            <th class="bg-primary  ">Category</th>
-            <th class="bg-primary  ">ImgUrl</th>
-            <th class="bg-primary  ">Details</th>
-            <th class="bg-primary  ">Product</th>
+            <tr class="col">
+                <th class="bg-primary">No</th>
+                <th class="bg-primary">Name</th>
+                <th class="bg-primary">Price</th>
+                <th class="bg-primary">Category</th>
+                <th class="bg-primary" class="ImgUrl">ImgUrl</th>
+                <th class="bg-primary">Image Preview</th>
+                <th class="bg-primary">Details</th>
+                <th class="bg-primary">Action</th>
+            </tr>
         </thead>
         <tbody id="table_data">
 
@@ -118,51 +230,111 @@
 
     </table>
 
+    <!-- </div> -->
+
+
+
+
+
+    <!-- <td class="h-10"><img src="${product.url}" alt="${product.name}"  /></td> -->
 
 
     <script>
         let product_data = [];
 
-        const addProduct = () => {
-            // console.log(document.getElementById('Product_url').value);
+        // let product_data = [];
 
+        window.onload = async () => {
+            // displayProduct(product_data);
+            await getOpenfoodFacts();
+            await updateProductImages();
+            generateRandomPrices();
+            sortbyprice();
+        };
+
+        const generateRandomPrices = () => {
+            product_data = product_data.map(product => ({
+                ...product,
+                price: Math.floor(Math.random() * 150) + 1
+            }));
+        };
+
+        const updateProductImages = async () => {
+            for (let product of product_data) {
+                product.url = await getUnsplashImage(product.name);
+            }
+            displayProduct(product_data);
+        };
+
+        const addProduct = async () => {
             let Product_name = document.getElementById('Product_name').value;
             let Product_price = document.getElementById('Product_price').value;
             let Product_category = document.getElementById('Product_category').value;
             let Product_url = document.getElementById('Product_url').value;
+            if (Product_url === "") {
+                if (Product_url === "") {
+                    Product_url = await getUnsplashImage(Product_name); // Assign the returned value
+                }
+            } else {
+                let Product_url = document.getElementById('Product_url').value;
+            }
 
-            if (!Product_name || !Product_price || !Product_category || !Product_url) {
+            // Check for empty fields
+            if (!Product_name || !Product_price || !Product_category) {
                 alert("Please fill all fields");
                 return;
             }
+
+            // Restrict duplicate products
+            let isDuplicate = product_data.some(product =>
+                product.name.toLowerCase() === Product_name.toLowerCase());
+
+            if (isDuplicate) {
+                alert("Product with the same name already exists!");
+                return;
+            }
+
+            // Fetch a random image dynamically based on category
+
 
             let product_info = {
                 name: Product_name.toUpperCase(),
                 price: Product_price,
                 category: Product_category,
                 url: Product_url,
-            }
+            };
 
             product_data.push(product_info);
 
-            displayProduct();
+            displayProduct(product_data);
 
+            sortbyprice();
 
-        }
+        };
 
-        const displayProduct = () => {
+        const displayProduct = (product_data) => {
             document.getElementById('table_data').innerHTML = '';
 
             product_data.forEach((product, i) => {
                 document.getElementById('table_data').innerHTML +=
-                    `<tr>
+                    `<tr class="text-center align-middle" style="max-height: 10rem;">
                         <td>${i + 1}</td>
                         <td>${product.name}</td>
                         <td>${product.price}&#x20B9;</td>
                         <td>${product.category}</td>
-                        <td>${product.url}</td>
-                        <td><button class='btn btn-info' data-bs-toggle="modal" data-bs-target="#ProductModal" onclick='viewDetails(${i});'>View Details</button></td>
-                        <td><button class='btn btn-danger' onclick='deleteProduct(${i});'>Remove</button></td>
+                        <td class="ImgUrl"><a href="${product.url}" target="_blank">${product.url}</a></td>
+                        <td class="PrevImg" ><img class="PrevImg" src="${product.url}" alt="${product.name}"  /></td>
+                        <td>
+                            <button class='btn btn-info' data-bs-toggle="modal" data-bs-target="#ProductModal" onclick='viewDetails(${i});'>
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class='btn btn-danger' onclick='deleteProduct(${i});'>
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+
                     <tr>`;
 
             })
@@ -170,12 +342,23 @@
 
         const deleteProduct = (idx) => {
             product_data.splice(idx, 1);
-            displayProduct();
+            displayProduct(product_data);
         }
 
+        let ascending = true;
+
         const sortbyprice = () => {
-            product_data.sort((product_1, product_2) => Number(product_1.price) - Number(product_2.price));
-            displayProduct();
+            if (ascending) {
+                product_data.sort((product_1, product_2) => Number(product_1.price) - Number(product_2.price));
+                document.getElementById('sort_btn').innerText = "Sort ↓";
+            } else {
+                product_data.sort((product_1, product_2) => Number(product_2.price) - Number(product_1.price));
+                document.getElementById('sort_btn').innerText = "Sort ↑";
+            }
+
+            ascending = !ascending;
+
+            displayProduct(product_data);
         }
 
         const viewDetails = (idx) => {
@@ -185,8 +368,90 @@
             document.getElementById('modalImage').src = product_data[idx].url;
             // console.log(document.getElementById('modalImage'));
         }
-        
+
+        const searchProductByCategory = () => {
+            let search = document.getElementById('search_category').value.toLowerCase();
+            let search_data = product_data.filter(product =>
+                product.category.toLowerCase().includes(search)
+            );
+            displayProduct(search_data);
+        };
+
+
+        const searchProductByName = () => {
+            let search = document.getElementById('search_name').value.toLowerCase();
+            let search_data = product_data.filter((product) =>
+                product.name.toLowerCase().includes(search)
+            );
+            displayProduct(search_data);
+        }
+
+
+        //extra portion
+
+        const UNSPLASH_ACCESS_KEY = "-viU6BTk7fRD9mpC1GLoKokHVLhJCNGOjM3v_00JtCY";
+
+        const getUnsplashImage = async (query) => {
+            try {
+                const response = await fetch(`https://api.unsplash.com/search/photos?query=${query}&client_id=${UNSPLASH_ACCESS_KEY}&per_page=10`);
+                if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
+
+                const data = await response.json();
+
+                // console.log("Unsplash API Response:", data); 
+
+                if (data.results.length > 0) {
+                    // Select a random image from the results
+                    const randomIndex = Math.floor(Math.random() * data.results.length);
+                    return data.results[randomIndex].urls.small;
+                } else {
+                    return "https://via.placeholder.com/400x300?text=No+Image";
+                }
+            } catch (error) {
+                console.error("Error fetching image:", error);
+                return "https://via.placeholder.com/400x300?text=Error+Fetching+Image";
+            }
+        };
+
+
+
+        const getOpenfoodFacts = async () => {
+            let number_of_data = 20;
+            try {
+                const response = await fetch(`https://world.openfoodfacts.org/api/v2/search?page_size=${number_of_data}`);
+                if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
+
+                const data = await response.json();
+
+                console.log(data);
+                // let name = data.products[0].product_name;
+                // let category = data.products[0].categories;
+                // console.log(name, category);
+
+                product_data = data.products.map(product => ({
+                    name: product.product_name,
+                    category: product.categories,
+                    price: Math.floor(Math.random() * 150) + 1,
+                }));
+
+                return product_data;
+
+                console.log("Open Food Facts API Response:", data); // Debugging log
+
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                return "https://via.placeholder.com/400x300?text=Error+Fetching+data";
+            }
+        };
+
+
+
+
+
+
+
     </script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
